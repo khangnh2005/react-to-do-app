@@ -34,8 +34,17 @@ li {
   padding: 8px 2px;
 }
 
-li > p {
-  padding: 6px;
+li > div {
+  display: flex;
+  justify-content: space-between;
+}
+
+li > div > div {
+  display: flex;
+  gap: 8px;
+}
+
+li > div > p {
   margin: 0;
 }
 

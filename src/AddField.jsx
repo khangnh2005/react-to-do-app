@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function AddField({onAdd }) {
+export default function AddField({ onAdd }) {
   const [taskInput, setTaskInput] = useState("");
 
   function handleInputChange(newInput) {
@@ -17,11 +17,14 @@ export default function AddField({onAdd }) {
         onChange={(e) => {
           handleInputChange(e.target.value);
         }}
-      ></input>
-      <button type="submit" onClick={(e) => {
-        e.preventDefault();
-        onAdd(taskInput);
-      }}>
+      />
+
+      <button
+        type="submit"
+        onClick={(e) => {
+          e.preventDefault();
+          onAdd(taskInput);
+        }}>
         Add
       </button>
     </form>
