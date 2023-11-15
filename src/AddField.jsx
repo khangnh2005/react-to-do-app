@@ -1,4 +1,12 @@
-export default function AddField({ taskInput, onInputChange, onAdd }) {
+import { useState } from "react";
+
+export default function AddField({onAdd }) {
+  const [taskInput, setTaskInput] = useState("");
+
+  function handleInputChange(newInput) {
+    setTaskInput(newInput);
+  }
+
   return (
     <form>
       <label>Add To-Do: </label>
@@ -7,7 +15,7 @@ export default function AddField({ taskInput, onInputChange, onAdd }) {
         placeholder="Enter Task Here"
         value={taskInput}
         onChange={(e) => {
-          onInputChange(e.target.value);
+          handleInputChange(e.target.value);
         }}
       ></input>
       <button type="submit" onClick={(e) => {

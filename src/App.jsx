@@ -5,7 +5,6 @@ import TaskList from "./TaskList";
 import { v4 as uuidv4 } from "uuid";
 
 export default function App() {
-  const [taskInput, setTaskInput] = useState("");
   const [taskList, setTaskList] = useState([
     {
       id: 1,
@@ -16,10 +15,6 @@ export default function App() {
       title: "Kill shits",
     },
   ]);
-
-  function handleInputChange(newInput) {
-    setTaskInput(newInput);
-  }
 
   function handleAdd(taskInput) {
     setTaskList([
@@ -34,8 +29,6 @@ export default function App() {
   return (
     <div className="main">
       <AddField
-        taskInput={taskInput}
-        onInputChange={handleInputChange}
         onAdd={handleAdd}
       />
       <TaskList taskList={taskList} />
