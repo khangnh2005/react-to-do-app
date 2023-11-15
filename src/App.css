@@ -27,6 +27,7 @@ ul {
   border-radius: 10px;
   padding: 8px 20px 15px 20px;
   min-width: 400px;
+  min-height: 400px;
 }
 
 li {

@@ -12,7 +12,7 @@ export default function App() {
     },
     {
       id: 2,
-      title: "Kill shits",
+      title: "Play games",
     },
   ]);
 
@@ -26,12 +26,16 @@ export default function App() {
     ]);
   }
 
+  function handleDelete(taskId) {
+    setTaskList(taskList.filter(task => task.id !== taskId));
+  }
+
   return (
     <div className="main">
       <AddField
         onAdd={handleAdd}
       />
-      <TaskList taskList={taskList} />
+      <TaskList taskList={taskList} onDelete={handleDelete} />
     </div>
   );
 }
