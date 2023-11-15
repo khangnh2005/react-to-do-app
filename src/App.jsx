@@ -4,9 +4,9 @@ import TaskList from './TaskList'
 
 export default function App() {
   return (
-    <>
+    <div className='main'>
       <AddField />
       <TaskList />
-    </>
+    </div>
   )
 }
