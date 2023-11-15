@@ -1,11 +1,10 @@
+import Task from "./Task";
+
 export default function TaskList({ taskList }) {
   return (
     <ul>
       {taskList.map((task) => (
-        <li key={task.id}>
-          <p>{task.title}</p>
-          <hr />
-        </li>
+        <Task key={task.id} title={task.title} />
       ))}
     </ul>
   );
