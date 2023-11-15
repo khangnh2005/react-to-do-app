@@ -38,6 +38,8 @@ li {
 li > div {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  gap: 8px;
 }
 
 li > div > div {
@@ -47,6 +49,10 @@ li > div > div {
 
 li > div > p {
   margin: 0;
+}
+
+li > div > input {
+  flex: 1;
 }
 
 hr {
