@@ -1,7 +1,10 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { TasksDispatchContext } from "./tasksContext";
+import { v4 as uuidv4 } from "uuid";
 
-export default function AddField({ onAdd }) {
+export default function AddField() {
   const [taskInput, setTaskInput] = useState("");
+  const dispatch = useContext(TasksDispatchContext);
 
   function handleInputChange(newInput) {
     setTaskInput(newInput);
@@ -23,7 +26,11 @@ export default function AddField({ onAdd }) {
         type="submit"
         onClick={(e) => {
           e.preventDefault();
-          onAdd(taskInput);
+          dispatch({
+            type: "added",
+            id: uuidv4(),
+            title: taskInput,
+          });
         }}>
         Add
       </button>

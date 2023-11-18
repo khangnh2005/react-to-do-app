@@ -2,8 +2,8 @@ import "./App.css";
 import { useReducer } from "react";
 import AddField from "./AddField";
 import TaskList from "./TaskList";
-import { v4 as uuidv4 } from "uuid";
 import tasksReducer from "./tasksReducer";
+import { TasksContext, TasksDispatchContext } from "./tasksContext";
 
 export default function App() {
   const [taskList, dispatch] = useReducer(tasksReducer, [
@@ -17,54 +17,38 @@ export default function App() {
     },
   ]);
 
-  function handleAdd(taskInput) {
-    dispatch({
-      type: "added",
-      id: uuidv4(),
-      title: taskInput,
-    });
-    // setTaskList([
-    //   ...taskList,
-    //   {
-    //     id: uuidv4(),
-    //     title: taskInput,
-    //   },
-    // ]);
-  }
+  // function handleAdd(taskInput) {
+  //   dispatch({
+  //     type: "added",
+  //     id: uuidv4(),
+  //     title: taskInput,
+  //   });
+  // }
 
-  function handleDelete(taskId) {
-    dispatch({
-      type: "deleted",
-      deleteId: taskId,
-    });
-    // setTaskList(taskList.filter(task => task.id !== taskId));
-  }
+  // function handleDelete(taskId) {
+  //   dispatch({
+  //     type: "deleted",
+  //     deleteId: taskId,
+  //   });
+  // }
 
-  function handleReplace(taskId, newTaskTitle) {
-    dispatch({
-      type: "replaced",
-      replaceId: taskId,
-      id: uuidv4(),
-      title: newTaskTitle,
-    });
-    // setTaskList(taskList.map(task => {
-    //   if (task.id === taskId) {
-    //     return {
-    //       id: uuidv4(),
-    //       title: newTaskTitle,
-    //     }
-    //   } else {
-    //     return task;
-    //   }
-    // }));
-  }
+  // function handleReplace(taskId, newTaskTitle) {
+  //   dispatch({
+  //     type: "replaced",
+  //     replaceId: taskId,
+  //     id: uuidv4(),
+  //     title: newTaskTitle,
+  //   });
+  // }
 
   return (
     <div className="main">
-      <AddField
-        onAdd={handleAdd}
-      />
-      <TaskList taskList={taskList} onDelete={handleDelete} onEdit={handleReplace} />
+      <TasksContext.Provider value={taskList}>
+        <TasksDispatchContext.Provider value={dispatch}>
+          <AddField />
+          <TaskList />
+        </TasksDispatchContext.Provider>
+      </TasksContext.Provider>
     </div>
   );
 }
