@@ -15,7 +15,6 @@ export default function Task({task, onDelete, onEdit, isBeingEdited, setEditID})
         <div className="icon-container">
           <FontAwesomeIcon icon={faCircleXmark} onClick={() => onDelete(task.id)}/>
           {!isBeingEdited && <FontAwesomeIcon icon={faPen} onClick={() => {
-            onEdit(task.id, inputTitle);
             setEditID(task.id);
           }} />}
           {isBeingEdited && <FontAwesomeIcon icon={faCheck} onClick={() => {
